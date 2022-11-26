@@ -93,6 +93,13 @@ module.exports.closeTimer = {
 
         const timeToClose = timeMs[duration] * timeNumber;
 
+        client.embeds.success({
+            message: message,
+            options: {
+                message: `Thread will be closed in **${time}**`
+            }
+        });
+
         setTimeout(() => {
             client.handleThreadClose(client, message, guildData)
         }, timeToClose);
