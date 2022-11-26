@@ -91,13 +91,13 @@ module.exports.closeTimer = {
             d: 86400000
         }
 
-        const timeToClose = timeMs[duration] * timeNumber;
-
         const embed = new EmbedBuilder()
             .setColor('Green')
             .setDescription(`This thread will be closed in ${time}!`);
         
         message.channel.send({ embeds: [ embed ] });
+
+        const timeToClose = timeMs[duration] * timeNumber;
 
         setTimeout(() => {
             client.handleThreadClose(client, message, guildData)
