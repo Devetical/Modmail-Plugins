@@ -104,3 +104,57 @@ module.exports.closeTimer = {
         }, timeToClose);
     }
 }
+
+module.exports.id = {
+    name: 'id',
+    description: 'Get the ID of a thread user',
+    usage: '{PREFIX}id',
+    category: 'utility',
+    run: async ({ client, message }) => {
+        const isThread = client.isThread(client, message);
+
+        if (!isThread) return client.embeds.error({
+            message: message,
+            options: {
+                error: 'This command can only be used in a thread channel.'
+            }
+        });
+
+        return message.reply(message.channel.topic);
+    }
+}
+
+module.exports.raw = {
+    name: 'raw',
+    description: 'Get the raw content of a message',
+    usage: '{PREFIX}raw <message ID>',
+    category: 'utility',
+    run: async ({ client, message, args }) => {
+        const isThread = client.isThread(client, message);
+
+        if (!isThread) return client.embeds.error({
+            message: message,
+            options: {
+                error: 'This command can only be used in a thread channel.'
+            }
+        });
+
+        if (!args[0]) return client.embeds.error({
+            message: message,
+            options: {
+                error: 'No message ID provided'
+            }
+        });
+
+        const msg = await message.channel.messages.fetch(args[0]);
+
+        if (!msg) return client.embeds.error({
+            message: message,
+            options: {
+                error: 'Invalid message ID'
+            }
+        });
+
+        return message.reply({ content: `\`\`\`${msg.content}\`\`\`` });
+    }
+}
