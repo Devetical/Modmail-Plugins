@@ -1,4 +1,4 @@
-const { CategoryChannel } = require('discord.js');
+const { CategoryChannel, EmbedBuilder } = require('discord.js');
 
 module.exports.plugin = {
     name: 'utils',
@@ -93,12 +93,11 @@ module.exports.closeTimer = {
 
         const timeToClose = timeMs[duration] * timeNumber;
 
-        client.embeds.success({
-            message: message,
-            options: {
-                message: `Thread will be closed in **${time}**`
-            }
-        });
+        const embed = new EmbedBuilder()
+            .setColor('Green')
+            .setDescription(`This thread will be closed in ${time}!`);
+        
+        message.channel.send({ embeds: [ embed ] });
 
         setTimeout(() => {
             client.handleThreadClose(client, message, guildData)
