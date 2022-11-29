@@ -40,7 +40,7 @@ async function getStats(id) {
         // return rows['1'].innerText.split('\t')
     });
     
-    console.log(tableData);
+    return tableData;
 }
 
 module.exports.plugin = {
