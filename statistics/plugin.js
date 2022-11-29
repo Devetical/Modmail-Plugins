@@ -1,3 +1,5 @@
+const puppeteer = require('puppeteer');
+
 async function getStats(id) {
     const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
     const page = await browser.newPage();
