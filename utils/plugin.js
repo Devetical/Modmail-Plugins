@@ -42,12 +42,12 @@ module.exports.move = {
             }
         })
 
-        message.channel.setParent(category.id)
+        await message.channel.setParent(category.id)
 
         return client.embeds.success({
             message: message,
             options: {
-                message: `Successfully moved thread to **${category.name}**`
+                description: `Successfully moved thread to **${category.name}**`
             }
         });
     }
@@ -156,6 +156,6 @@ module.exports.raw = {
         });
 
 
-        return message.reply({ content: `\`\`\`${msg.content}\`\`\`` });
+        return message.reply({ content: `\`\`\`${msg.embeds[0].description}\`\`\`` });
     }
 }
