@@ -159,3 +159,14 @@ module.exports.raw = {
         return message.reply({ content: `\`\`\`${msg.embeds[0].description}\`\`\`` });
     }
 }
+
+module.exports.servericon = {
+    name: 'servericon',
+    description: 'Get the server icon',
+    usage: '{PREFIX}servericon',
+    category: 'utility',
+    aliases: [ 'si' ]
+    run: async ({ client, message, args }) => {
+        return message.reply({ content: message.guild.iconURL({ extension: 'png', size: 1024 });
+    }
+}
