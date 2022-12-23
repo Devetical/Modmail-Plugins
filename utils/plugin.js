@@ -167,6 +167,6 @@ module.exports.servericon = {
     category: 'utility',
     aliases: [ 'si' ],
     run: async ({ client, message, args }) => {
-        return message.reply({ content: message.guild.iconURL({ extension: 'png', size: 1024 });
+        return message.reply({ content: message.guild.iconURL({ extension: 'png', size: 1024 }) });
     }
 }
