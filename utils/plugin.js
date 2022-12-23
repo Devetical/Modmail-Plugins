@@ -165,7 +165,7 @@ module.exports.servericon = {
     description: 'Get the server icon',
     usage: '{PREFIX}servericon',
     category: 'utility',
-    aliases: [ 'si' ]
+    aliases: [ 'si' ],
     run: async ({ client, message, args }) => {
         return message.reply({ content: message.guild.iconURL({ extension: 'png', size: 1024 });
     }
